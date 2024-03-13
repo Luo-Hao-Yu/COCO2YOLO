@@ -2,6 +2,8 @@
 COCO to YOLO converter
 
 # Usage
+# 将train_coco.json转换为yolo
+`python COCO2YOLO.py -j coco\train_coco.json -o yolo\train`
 
-`python COCO2YOLO.py -j coco.json -o path_to_dir`
-
+# 将val_coco.json转换为yolo
+`python COCO2YOLO.py -j coco\val_coco.json -o yolo\val`
