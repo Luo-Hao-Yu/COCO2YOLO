@@ -64,14 +64,16 @@ class COCO2YOLO:
         h *= dh  # 框长度归一化
         # 穴位坐标归一化
         k = [0] * 63
-        for i in range(0,63,3):
+        for i in range(0, 63, 3):
             k[i] = keypoints[i] * dw
-            k[i+1] = keypoints[i+1] *dh
-            k[i+2] = keypoints[i+2]
+            k[i + 1] = keypoints[i + 1] * dh
+            k[i + 2] = int(keypoints[i + 2])
 
         return centerx, centery, w, h, k[0], k[1], k[2], k[3], k[4], k[5], k[6], k[7], k[8], k[9], k[10], k[11], k[12], \
         k[13], k[14], k[15], k[16], k[17], k[18], k[19], k[20], k[21], k[22], k[23], k[24], k[25], k[26], k[27], k[28], \
-        k[29], k[30], k[31], k[40], k[50], k[60], k[61], k[62]
+        k[29], k[30], k[31], k[32], k[33], k[34], k[35], k[36], k[37], k[38], k[39], k[40], k[41], k[42], k[43], k[44], \
+        k[45], k[46], k[47], k[48], k[49], k[50], k[51], k[52], k[53], k[54], k[55], k[56], k[57], k[58], k[59], k[60], \
+        k[61], k[62]
 
     # 将 COCO 格式的注释转换为 YOLO 格式
     def _convert_anno(self, images_info):
@@ -132,6 +134,7 @@ class COCO2YOLO:
                     box = ' '.join(box)
                     line = str(category_id) + ' ' + box
                     f.write(line + '\n')
+
 
 if __name__ == '__main__':
     c2y = COCO2YOLO()
